@@ -27,10 +27,11 @@ const App = () => {
               .required("Hadi ama herkesin sevdiği bir renk vardır!")
               .oneOf(["red", "blue", "green"]),
           })}
-          onSubmit={(values, { setSubmitting }) => {
+          onSubmit={(values, { setSubmitting, resetForm }) => {
             console.log(values);
             setTimeout(() => {
               setSubmitting(false);
+              resetForm();
             }, 2000);
           }}
         >
