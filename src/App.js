@@ -1,7 +1,7 @@
-import React from "react";
-import { Formik } from "formik";
-import * as Yup from "yup";
-import "./App.css";
+import React from 'react';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import './App.css';
 
 const App = () => {
   return (
@@ -14,18 +14,18 @@ const App = () => {
       <div className="magic-form">
         <Formik
           initialValues={{
-            name: "",
-            email: "",
+            name: '',
+            email: '',
             agree: false,
-            favoriteColor: "",
+            favoriteColor: '',
           }}
           validationSchema={Yup.object({
-            name: Yup.string().required("İsim boş bırakılamaz"),
-            email: Yup.string().email().required("Email boş bırakılamaz"),
-            agree: Yup.boolean().required("Koşulları kabul etmelisin"),
+            name: Yup.string().required('İsim boş bırakılamaz'),
+            email: Yup.string().email().required('Email boş bırakılamaz'),
+            agree: Yup.bool().oneOf([true], 'Koşulları kabul etmelisiniz'),
             favoriteColor: Yup.string()
-              .required("Hadi ama herkesin sevdiği bir renk vardır!")
-              .oneOf(["red", "blue", "green"]),
+              .required('Hadi ama herkesin sevdiği bir renk vardır!')
+              .oneOf(['red', 'blue', 'green']),
           })}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             console.log(values);
@@ -72,10 +72,6 @@ const App = () => {
                 onChange={handleChange}
               />
 
-              {errors.email && touched.email && (
-                <div className="input-feedback">{errors.email}</div>
-              )}
-
               <label htmlFor="favoriteColor" className="topMargin">
                 Favori Renk
               </label>
@@ -85,9 +81,9 @@ const App = () => {
                 onChange={handleChange}
                 style={{
                   marginTop: 10,
-                  width: "150px",
-                  padding: "10px 15px",
-                  outline: "none",
+                  width: '150px',
+                  padding: '10px 15px',
+                  outline: 'none',
                 }}
               >
                 <option value="" label="Renk seç.." />
@@ -111,8 +107,7 @@ const App = () => {
                   Sözleşmeyi okudum kabul ediyorum.
                 </label>
               </div>
-
-              {errors.agree && touched.agree && (
+              {errors.agree && (
                 <div className="input-feedback">{errors.agree}</div>
               )}
 
